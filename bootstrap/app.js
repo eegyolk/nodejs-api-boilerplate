@@ -1,7 +1,8 @@
 require('dotenv').config();
 
 const appConfig = require('../config/app'),
-  databaseConfig = require('../config/database');
+  databaseConfig = require('../config/database'),
+  telegramConfig = require('../config/telegram');
 
 const apiRoutes = require('../routes/api'),
   webRoutes = require('../routes/web');
@@ -9,6 +10,7 @@ const apiRoutes = require('../routes/api'),
 module.exports.config = {
   app: appConfig,
   database: databaseConfig,
+  telegram: telegramConfig,
 };
 
 module.exports.extendApp = function ({ app }) {
