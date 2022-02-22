@@ -1,0 +1,18 @@
+{
+  "coverageReporters": ["html"],
+  "collectCoverage": true,
+  "collectCoverageFrom": ["app/**/*.js"],
+  "coverageDirectory": "test-suites/coverage/",
+  "reporters": [
+    "default",
+    [
+      "./node_modules/jest-html-reporter",
+      {
+        "pageTitle": "Test Suites Reporter",
+        "outputPath": "./test-suites/test-suites-results.html",
+        "includeFailureMsg": true,
+        "includeSuiteFailure": true
+      }
+    ]
+  ]
+}
