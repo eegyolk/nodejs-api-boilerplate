@@ -1,7 +1,7 @@
 const EventEmitter = require('events');
 
 module.exports = {
-  name: process.env.APP_NAME || 'NodeJS API Boilerplate',
+  name: process.env.APP_NAME || 'nodejs-api-boilerplate',
   version: process.env.APP_VERSION || '1.0.0',
   env: process.env.APP_ENV || 'local',
   secretKey:
