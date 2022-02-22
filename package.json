@@ -14,7 +14,9 @@
     "node": ">=16"
   },
   "scripts": {
-    "serve-dev": "NODE_ENV=development nodemon public/index.js"
+    "create-bundle": "./node_modules/.bin/webpack --config webpack.config.js",
+    "serve-dev": "NODE_ENV=development nodemon public/index.js",
+    "serve-prod": "NODE_ENV=production node bundle/nodejs-api-boilerplate-bundle.js"
   },
   "dependencies": {
     "compression": "^1.7.4",
