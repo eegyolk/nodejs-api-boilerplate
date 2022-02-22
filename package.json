@@ -1,0 +1,42 @@
+{
+  "name": "nodejs-api-boilerplate",
+  "version": "1.0.0",
+  "description": "NodeJS API Boilerplate",
+  "repository": "https://github.com/unit15lab/nodejs-api-boilerplate",
+  "author": {
+    "name": "Edgardo Guzman Jr",
+    "email": "eegyolk@gmail.com",
+    "url": "https://github.com/eegyolk"
+  },
+  "license": "UNLICENSED",
+  "private": true,
+  "engines": {
+    "node": ">=16"
+  },
+  "scripts": {
+    "serve-dev": "NODE_ENV=development nodemon public/index.js"
+  },
+  "dependencies": {
+    "compression": "^1.7.4",
+    "dotenv": "^16.0.0",
+    "express": "^4.17.3",
+    "knex": "^1.0.3",
+    "mysql": "^2.18.1",
+    "objection": "^3.0.1",
+    "validatorjs": "^3.22.1",
+    "winston": "^3.6.0",
+    "winston-daily-rotate-file": "^4.6.1"
+  },
+  "devDependencies": {
+    "babel-loader": "^8.2.3",
+    "faker": "^6.6.6",
+    "jest": "^27.5.1",
+    "jest-html-reporter": "^3.4.2",
+    "lorem-ipsum": "^2.0.4",
+    "nodemon": "^2.0.15",
+    "supertest": "^6.2.2",
+    "webpack": "^5.69.1",
+    "webpack-cli": "^4.9.2",
+    "webpack-node-externals": "^3.0.0"
+  }
+}
