@@ -2,6 +2,7 @@ require('dotenv').config();
 
 const appConfig = require('../config/app'),
   databaseConfig = require('../config/database'),
+  loggingConfig = require('../config/logging'),
   redisConfig = require('../config/redis'),
   telegramConfig = require('../config/telegram');
 
@@ -11,6 +12,7 @@ const apiRoutes = require('../routes/api'),
 module.exports.config = {
   app: appConfig,
   database: databaseConfig,
+  logging: loggingConfig,
   redis: redisConfig,
   telegram: telegramConfig,
 };
