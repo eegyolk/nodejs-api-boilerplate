@@ -14,9 +14,15 @@
     "node": ">=16"
   },
   "scripts": {
-    "create-bundle": "./node_modules/.bin/webpack --config webpack.config.js",
-    "serve-dev": "NODE_ENV=development nodemon public/index.js",
-    "serve-prod": "NODE_ENV=production node bundle/nodejs-api-boilerplate-bundle.js"
+    "create:bundle": "./node_modules/.bin/webpack --config webpack.config.js",
+    "migration:make:mysql": "./node_modules/.bin/knex --knexfile=config/knexfile-mysql.js migrate:make",
+    "seed:make:mysql": "./node_modules/.bin/knex --knexfile=config/knexfile-mysql.js seed:make",
+    "migrate:seed:mysql:dev": "node -r dotenv/config ./node_modules/.bin/knex --env=development --knexfile=config/knexfile-mysql.js migrate:latest && node -r dotenv/config ./node_modules/.bin/knex --env=development --knexfile=config/knexfile-mysql.js seed:run",
+    "migrate:seed:mysql:prod": "node -r dotenv/config ./node_modules/.bin/knex --env=production --knexfile=config/knexfile-mysql.js migrate:latest && node -r dotenv/config ./node_modules/.bin/knex --env=production --knexfile=config/knexfile-mysql.js seed:run",
+    "migrate:seed:pg:dev": "node -r dotenv/config ./node_modules/.bin/knex --env=development --knexfile=config/knexfile-pg.js migrate:latest && node -r dotenv/config ./node_modules/.bin/knex --env=development --knexfile=config/knexfile-pg.js seed:run",
+    "migrate:seed:pg:prod": "node -r dotenv/config ./node_modules/.bin/knex --env=production --knexfile=config/knexfile-pg.js migrate:latest && node -r dotenv/config ./node_modules/.bin/knex --env=production --knexfile=config/knexfile-pg.js seed:run",
+    "serve:dev": "NODE_ENV=development nodemon public/index.js",
+    "serve:prod": "NODE_ENV=production node bundle/nodejs-api-boilerplate-bundle.js"
   },
   "dependencies": {
     "compression": "^1.7.4",
@@ -25,13 +31,14 @@
     "knex": "^1.0.3",
     "mysql": "^2.18.1",
     "objection": "^3.0.1",
+    "pg": "^8.7.3",
     "validatorjs": "^3.22.1",
     "winston": "^3.6.0",
     "winston-daily-rotate-file": "^4.6.1"
   },
   "devDependencies": {
+    "@faker-js/faker": "^6.0.0-alpha.7",
     "babel-loader": "^8.2.3",
-    "faker": "^6.6.6",
     "jest": "^27.5.1",
     "jest-html-reporter": "^3.4.2",
     "lorem-ipsum": "^2.0.4",
