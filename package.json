@@ -15,8 +15,8 @@
   },
   "scripts": {
     "create:bundle": "./node_modules/.bin/webpack --config webpack.config.js",
-    "migration:make:mysql": "./node_modules/.bin/knex --knexfile=config/knexfile-mysql.js migrate:make",
-    "seed:make:mysql": "./node_modules/.bin/knex --knexfile=config/knexfile-mysql.js seed:make",
+    "migration:make": "./node_modules/.bin/knex --knexfile=config/knexfile-mysql.js migrate:make",
+    "seed:make": "./node_modules/.bin/knex --knexfile=config/knexfile-mysql.js seed:make",
     "migrate:seed:mysql:dev": "node -r dotenv/config ./node_modules/.bin/knex --env=development --knexfile=config/knexfile-mysql.js migrate:latest && node -r dotenv/config ./node_modules/.bin/knex --env=development --knexfile=config/knexfile-mysql.js seed:run",
     "migrate:seed:mysql:prod": "node -r dotenv/config ./node_modules/.bin/knex --env=production --knexfile=config/knexfile-mysql.js migrate:latest && node -r dotenv/config ./node_modules/.bin/knex --env=production --knexfile=config/knexfile-mysql.js seed:run",
     "migrate:seed:pg:dev": "node -r dotenv/config ./node_modules/.bin/knex --env=development --knexfile=config/knexfile-pg.js migrate:latest && node -r dotenv/config ./node_modules/.bin/knex --env=development --knexfile=config/knexfile-pg.js seed:run",
