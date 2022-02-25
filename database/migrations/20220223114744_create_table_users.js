@@ -7,13 +7,12 @@ exports.up = function (knex) {
 
   return knex.schema.createTable('users', function (table) {
     table.increments('id').primary();
-    table.string('name', 250).notNullable().defaultTo('');
+    table.string('name', 250).notNullable();
     table
       .string('email', 250)
       .unique({ indexName: 'user_uniq_email' })
-      .notNullable()
-      .defaultTo('');
-    table.string('password', 250).notNullable().defaultTo('');
+      .notNullable();
+    table.string('password', 250).notNullable();
     table.string('remember_token', 100).defaultTo('');
     table.string('verification_token', 32).defaultTo('');
     table.string('recovery_token', 32).defaultTo('');
