@@ -1,7 +1,7 @@
 const Validator = require('validatorjs');
 
-const ValidationException = require('../Exceptions/ValidationException');
 const HttpCodeConstant = require('../Constants/HttpCodeConstant');
+const ValidationException = require('../Exceptions/ValidationException');
 
 class Validation {
   constructor(data, rules, messages = null) {
