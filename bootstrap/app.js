@@ -1,5 +1,7 @@
 require('dotenv').config();
 
+const Database = require('../app/Classes/Database');
+
 const appConfig = require('../config/app'),
   databaseConfig = require('../config/database'),
   loggingConfig = require('../config/logging'),
@@ -18,6 +20,9 @@ module.exports.config = {
 };
 
 module.exports.extendApp = function ({ app }) {
+  app.locals.databaseConnections = new Database(
+    this.config.database
+  ).createConnections();
   app.locals.config = this.config;
 
   app.use('/api', apiRoutes);
