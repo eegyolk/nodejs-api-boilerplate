@@ -1,8 +1,8 @@
 const EventEmitter = require('events');
 
 module.exports = {
-  /** Defaut Database Connection Name */
-  default: process.env.DB_CONNECTION || 'mysql',
+  /** Use Database Connections Name */
+  uses: process.env.DB_CONNECTIONS.split(',') || 'mysql'.split(','),
 
   /** Database Connections */
   connections: {
@@ -36,6 +36,25 @@ module.exports = {
         process.env.DB_POOL_CREATE_RETRY_INTERVAL_MILLIS || 10,
       poolPropagateCreateError:
         process.env.DB_POOL_PROPAGATE_CREATE_ERROR || false,
+    },
+    pg: {
+      driver: 'pg',
+      host: process.env.DB_HOST || '127.0.0.1',
+      port: process.env.DB_PORT || 3306,
+      database:
+        process.env.DB_DATABASE ||
+        new EventEmitter().emit('error', new Error('DB_DATABASE is missing!')),
+      username:
+        process.env.DB_USERNAME ||
+        new EventEmitter().emit('error', new Error('DB_USERNAME is missing!')),
+      password:
+        process.env.DB_PASSWORD ||
+        new EventEmitter().emit('error', new Error('DB_PASSWORD is missing!')),
+      connectionTimeout: process.env.DB_CONNECTION_TIMEOUT || 30000,
+      acquireConnectionTimeout:
+        process.env.DB_ACQUIRE_CONNECTION_TIMEOUT || 15000,
+      poolMinConnection: process.env.DB_POOL_MIN_CONNECTION || 0,
+      poolMaxConnection: process.env.DB_POOL_MAX_CONNECTION || 10,
     },
   },
 };
