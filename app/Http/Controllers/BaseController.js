@@ -13,6 +13,8 @@ class BaseController {
         err.getTitle(),
         err.getErrors()
       );
+
+      res.set('Content-Type', 'application/vnd.api+json');
       res.status(response.getHttpCode()).json(response.getContent());
       return;
     }
@@ -24,6 +26,8 @@ class BaseController {
         err.name,
         err.nativeError.sqlMessage
       );
+
+      res.set('Content-Type', 'application/vnd.api+json');
       res.status(response.getHttpCode()).json(response.getContent());
       return;
     }
@@ -34,6 +38,8 @@ class BaseController {
       UnknownException.getTitle(),
       UnknownException.getErrors()
     );
+
+    res.set('Content-Type', 'application/vnd.api+json');
     res.status(response.getHttpCode()).json(response.getContent());
   }
 }
