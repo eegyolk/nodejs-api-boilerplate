@@ -11,6 +11,14 @@ class ValidationException {
   getErrors() {
     return this.validation.getErrors();
   }
+
+  getTitle() {
+    return 'UnprocessableEntity';
+  }
+
+  getCode() {
+    return 'ER_INVALID_REQUEST';
+  }
 }
 
 module.exports = ValidationException;
