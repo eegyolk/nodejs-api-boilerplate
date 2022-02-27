@@ -10,6 +10,10 @@ class UsersRepository {
       password,
     });
   }
+
+  static async getUser(id, connection) {
+    return await Users.query(connection).findById(id);
+  }
 }
 
 module.exports = UsersRepository;
