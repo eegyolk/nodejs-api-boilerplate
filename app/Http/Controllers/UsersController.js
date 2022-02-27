@@ -13,6 +13,25 @@ class UsersController extends BaseController {
         config.app.url
       );
 
+      res.set('Location', response.getLocation);
+      res.status(response.getHttpCode()).json(response.getContent());
+    } catch (err) {
+      BaseController.errorHandler(res, err);
+    }
+  }
+
+  static async getUser(req, res) {
+    const { params, app } = req;
+    const { databaseConnections, config } = app.locals;
+
+    try {
+      const response = await UsersService.getUser(
+        params,
+        databaseConnections,
+        config.app.url
+      );
+
+      res.set('Location', response.getLocation);
       res.status(response.getHttpCode()).json(response.getContent());
     } catch (err) {
       BaseController.errorHandler(res, err);
