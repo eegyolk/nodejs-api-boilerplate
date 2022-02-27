@@ -6,7 +6,7 @@ const appBootstrap = require('../bootstrap/app'),
   config = appBootstrap.config;
 
 app.use(compression({ threshold: 0 }));
-app.use(express.json());
+app.use(express.json({ type: 'application/vnd.api+json' }));
 app.use(express.urlencoded({ extended: true }));
 app.disable('x-powered-by');
 
