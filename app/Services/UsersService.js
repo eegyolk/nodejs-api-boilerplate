@@ -34,6 +34,26 @@ class UsersService extends BaseService {
       data
     );
   }
+
+  static async getUser(params, databaseConnections, url) {
+    const rules = {
+      id: 'required|integer',
+    };
+
+    const validation = new Validation(params, rules);
+    validation.validate();
+
+    const data = await UsersRepository.getUser(
+      params.id,
+      databaseConnections.mysql
+    );
+
+    return new SuccessResponse(
+      HttpCodeConstant.OK,
+      this.resolveLinks(url, this.linkType, params.id),
+      typeof data !== 'undefined' ? data : null
+    );
+  }
 }
 
 module.exports = UsersService;
