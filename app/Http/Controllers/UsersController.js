@@ -13,7 +13,8 @@ class UsersController extends BaseController {
         config.app.url
       );
 
-      res.set('Location', response.getLocation);
+      res.set('Content-Type', 'application/vnd.api+json');
+      res.set('Location', response.getLocation());
       res.status(response.getHttpCode()).json(response.getContent());
     } catch (err) {
       BaseController.errorHandler(res, err);
@@ -31,7 +32,8 @@ class UsersController extends BaseController {
         config.app.url
       );
 
-      res.set('Location', response.getLocation);
+      res.set('Content-Type', 'application/vnd.api+json');
+      res.set('Location', response.getLocation());
       res.status(response.getHttpCode()).json(response.getContent());
     } catch (err) {
       BaseController.errorHandler(res, err);
