@@ -24,6 +24,10 @@ class SuccessResponse {
 
     return content;
   }
+
+  getLocation() {
+    return this.links;
+  }
 }
 
 module.exports = SuccessResponse;
