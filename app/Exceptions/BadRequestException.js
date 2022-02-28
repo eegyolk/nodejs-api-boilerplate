@@ -1,13 +1,22 @@
 class BadRequestException {
-  static getErrors() {
-    return 'The expected header is missing or invalid.';
+  constructor(status, error = null) {
+    this.status = status;
+    this.error = error;
   }
 
-  static getTitle() {
+  getStatus() {
+    return this.status;
+  }
+
+  getErrors() {
+    return this.error || 'The expected header is missing or invalid.';
+  }
+
+  getTitle() {
     return 'BadRequest';
   }
 
-  static getCode() {
+  getCode() {
     return 'ER_BAD_REQUEST';
   }
 }

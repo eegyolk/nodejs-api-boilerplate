@@ -1,13 +1,25 @@
 class UnsupportedMediaTypeException {
-  static getErrors() {
-    return 'The server refuses to accept the request because the payload format is in an unsupported format.';
+  constructor(status, error = null) {
+    this.status = status;
+    this.error = error;
   }
 
-  static getTitle() {
+  getStatus() {
+    return this.status;
+  }
+
+  getErrors() {
+    return (
+      this.error ||
+      'The server refuses to accept the request because the payload format is in an unsupported format.'
+    );
+  }
+
+  getTitle() {
     return 'UnsupportedMediaType';
   }
 
-  static getCode() {
+  getCode() {
     return 'ER_UNSUPPORTED_MEDIA_TYPE';
   }
 }
