@@ -17,7 +17,7 @@ class CheckHeaderMiddleware extends BaseMiddleware {
 
       throw new BadRequestException(HttpCodeConstant.BAD_REQUEST);
     } catch (err) {
-      BaseMiddleware.errorHandler(res, err);
+      BaseMiddleware.errorHandler(req, res, err);
     }
   }
 
@@ -36,7 +36,7 @@ class CheckHeaderMiddleware extends BaseMiddleware {
         HttpCodeConstant.UNSUPPORTED_MEDIA_TYPE
       );
     } catch (err) {
-      BaseMiddleware.errorHandler(res, err);
+      BaseMiddleware.errorHandler(req, res, err);
     }
   }
 }

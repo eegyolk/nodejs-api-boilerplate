@@ -6,7 +6,9 @@ const UnknownException = require('../../Exceptions/UnknownException');
 const ValidationException = require('../../Exceptions/ValidationException');
 
 class BaseController {
-  static errorHandler(res, err) {
+  static errorHandler(req, res, err) {
+    req.log.error(err);
+
     if (err instanceof ValidationException) {
       const response = new ErrorResponse(
         err.getStatus(),

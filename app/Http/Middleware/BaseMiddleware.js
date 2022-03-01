@@ -5,7 +5,9 @@ const UnknownException = require('../../Exceptions/UnknownException');
 const UnsupportedMediaTypeException = require('../../Exceptions/UnsupportedMediaTypeException');
 
 class BaseMiddleware {
-  static errorHandler(res, err) {
+  static errorHandler(req, res, err) {
+    req.log.error(err);
+
     if (
       err instanceof BadRequestException ||
       err instanceof UnsupportedMediaTypeException

@@ -17,7 +17,7 @@ class UsersController extends BaseController {
       res.set('Location', response.getLocation());
       res.status(response.getHttpCode()).json(response.getContent());
     } catch (err) {
-      BaseController.errorHandler(res, err);
+      BaseController.errorHandler(req, res, err);
     }
   }
 
@@ -36,7 +36,7 @@ class UsersController extends BaseController {
       res.set('Location', response.getLocation());
       res.status(response.getHttpCode()).json(response.getContent());
     } catch (err) {
-      BaseController.errorHandler(res, err);
+      BaseController.errorHandler(req, res, err);
     }
   }
 }
