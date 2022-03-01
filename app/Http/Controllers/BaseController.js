@@ -1,4 +1,4 @@
-const { UniqueViolationError } = require('objection');
+const { DBError, UniqueViolationError } = require('objection');
 
 const ErrorResponse = require('../../Response/ErrorResponse');
 const HttpCodeConstant = require('../../Constants/HttpCodeConstant');
@@ -15,6 +15,19 @@ class BaseController {
         err.getCode(),
         err.getTitle(),
         err.getErrors()
+      );
+
+      res.set('Content-Type', 'application/vnd.api+json');
+      res.status(response.getHttpCode()).json(response.getContent());
+      return;
+    }
+
+    if (err instanceof DBError) {
+      const response = new ErrorResponse(
+        HttpCodeConstant.INTERNAL_SERVER_ERROR,
+        err.nativeError.code,
+        err.name,
+        err.nativeError.sqlMessage
       );
 
       res.set('Content-Type', 'application/vnd.api+json');
