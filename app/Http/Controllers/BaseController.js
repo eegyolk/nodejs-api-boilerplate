@@ -1,6 +1,7 @@
+const { UniqueViolationError } = require('objection');
+
 const ErrorResponse = require('../../Response/ErrorResponse');
 const HttpCodeConstant = require('../../Constants/HttpCodeConstant');
-const { UniqueViolationError } = require('objection');
 const UnknownException = require('../../Exceptions/UnknownException');
 const ValidationException = require('../../Exceptions/ValidationException');
 
